@@ -33,6 +33,12 @@ def convertDate(date: str):
             return list(map(int, temp[0].split('-')))[::-1]
 
 
+def isDateValid(date):
+    if date == 'NA':
+        return False
+    else:
+        return True
+
 class Person:
     def __init__(self, first_name: str, last_name: str, age: int,
                  birth_date: str, marry_date: str, divorce_date: str, death_date: str):
@@ -54,7 +60,14 @@ class Person:
         print('death date: ' + '-'.join([str(i) for i in self.death_date]))
 
     def isBirthBeforeDeath(self):
-        return IsADayBeforeBDay(self.birth_date, self.death_date)
+        # 在有关日期的方法里，一定要先用isDateValid判断，因为date变量有可能是"NA"
+        if isDateValid(self.birth_date) and isDateValid(self.death_date):
+            return IsADayBeforeBDay(self.birth_date, self.death_date)
+        if isDateValid(self.birth_date) is False:
+            print("Birth date is NA!")
+        if isDateValid(self.death_date) is False:
+            print("Death date is NA!")
+
         # only need to call the function, and return its output
 
     def isMarryBeforeDeath(self):
