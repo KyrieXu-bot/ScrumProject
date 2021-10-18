@@ -18,7 +18,8 @@ if __name__ == '__main__':
     ged.getTable(indi_fami_dict_list, pretty_table_path)
 
     individuals = ged.getIndividuals(indi_fami_dict_list)
-    for individual in individuals:
-        individual.showInfo()
+    individuals[14].showInfo()
+    # for individual in individuals:
+    #     individual.showInfo()
 
 

@@ -4,13 +4,19 @@
 # @File : GedcomClass.py
 # @Description : Generate Class like Person or family, including their functions
 
-def IsADayBeforeBDay(Data_A: list, Date_B: list):
+def IsADayBeforeBDay(Data_A, Date_B):
     """
     Compare 2 dates, to see if A is before B
     :param Data_A: format should be [day, month, year], all are integers
     :param Date_B: same as above
     :return: whether A is before B
     """
+    if not isDateValid(Data_A):
+        print("Date A is invalid!")
+        return False
+    if not isDateValid(Date_B):
+        print("Date B is invalid!")
+        return False
     if Data_A[2] > Date_B[2]:
         return False
     if Data_A[2] == Date_B[2]:  # if 2 dates in same year
@@ -28,9 +34,9 @@ def convertDate(date: str):
     else:
         temp = date.split(' ')
         if temp[0] == "about":  # about 1998-2-3
-            return list(map(int, temp[1].split('-')))[::-1]
+            return list(map(int, temp[1].split('-')))
         else:
-            return list(map(int, temp[0].split('-')))[::-1]
+            return list(map(int, temp[0].split('-')))
 
 
 def isDateValid(date):
@@ -38,6 +44,7 @@ def isDateValid(date):
         return False
     else:
         return True
+
 
 class Person:
     def __init__(self, first_name: str, last_name: str, age: int,
@@ -60,18 +67,13 @@ class Person:
         print('death date: ' + '-'.join([str(i) for i in self.death_date]))
 
     def isBirthBeforeDeath(self):
-        # 在有关日期的方法里，一定要先用isDateValid判断，因为date变量有可能是"NA"
-        if isDateValid(self.birth_date) and isDateValid(self.death_date):
-            return IsADayBeforeBDay(self.birth_date, self.death_date)
-        if isDateValid(self.birth_date) is False:
-            print("Birth date is NA!")
-        if isDateValid(self.death_date) is False:
-            print("Death date is NA!")
-
-        # only need to call the function, and return its output
+        return IsADayBeforeBDay(self.birth_date, self.death_date)
 
     def isMarryBeforeDeath(self):
         return IsADayBeforeBDay(self.marry_date, self.death_date)
+
+    def isDivorceBeforeDeath(self):
+        return IsADayBeforeBDay(self.divorce_date, self.death_date)
 
     def isLessThan150YearOld(self):
         return True if self.age < 150 else False

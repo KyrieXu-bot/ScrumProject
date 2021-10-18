@@ -4,7 +4,7 @@ Individuals:
 +-----+-----------------------+--------+----------------+-----+-------+-----------+-------+--------+
 |  I1 |     Sirius /White/    |   M    |   1959-11-3    |  61 |  True |     NA    |   NA  |   NA   |
 |  I2 |    Walburga /White/   |   F    | about 1925-1-1 |  60 | False | 1985-10-8 |   F2  |   F1   |
-|  I3 |     Orion /White/     |   M    |   1929-5-18    |  92 |  True |     NA    |   F3  |   NA   |
+|  I3 |     Orion /White/     |   M    |   1929-5-18    |  66 | False |  1995-9-7 |   F3  |   F1   |
 |  I4 |    Regulus /White/    |   M    | about 1961-9-9 |  60 |  True |     NA    |   NA  |   NA   |
 |  I5 |   Melania /Mcmillan/  |   F    |    1904-8-8    |  84 | False | 1988-12-4 |   NA  |   F3   |
 |  I6 |    Arcturus /White/   |   M    |    1901-7-7    |  90 | False |  1991-8-6 |   F4  |   F3   |
@@ -34,16 +34,18 @@ Individuals:
 | I30 |    Tom /Lestrange/    |   F    |   1981-12-5    |  39 |  True |     NA    |   NA  |   NA   |
 +-----+-----------------------+--------+----------------+-----+-------+-----------+-------+--------+
 Families:
-+-----+---------+----------+------------+-----------------------+---------+----------------------+----------------------------------+
-|  ID | Married | Divorced | Husband ID |      Husband Name     | Wife ID |      Wife Name       |             Children             |
-+-----+---------+----------+------------+-----------------------+---------+----------------------+----------------------------------+
-|  F1 |    Y    |    NA    |     I9     |    Polluix /White/    |    I8   |    Irma /Crabbe/     | ['I1', 'I4', 'I2', 'I10', 'I16'] |
-|  F3 |    NA   |    NA    |     I6     |    Arcturus /White/   |    I5   |  Melania /Mcmillan/  |           ['I3', 'I7']           |
-|  F4 |    NA   |    NA    |    I13     |     Sirius /White/    |   I12   |    Hesper /Gamp/     |       ['I6', 'I14', 'I15']       |
-|  F5 |    Y    |    NA    |    I19     |     Cygnus /White/    |   I18   | Violetta /Bulstrode/ |   ['I9', 'I20', 'I21', 'I22']    |
-|  F7 |    NA   |    NA    |    I15     |    Regulus /White/    |   I28   |   Rose /Umbridge/    |             ['I29']              |
-|  F8 |    NA   |    NA    |    I15     |    Regulus /White/    |   I26   |     Amy /Smith/      |             ['I27']              |
-|  F9 |    NA   |    NA    |    I16     |    Cygunus /White/    |   I17   |   Druella /Rosier/   |             ['I24']              |
-| F10 |    NA   |    NA    |    I23     |    Charlus /Potter/   |   I22   |    Dorea /White/     |                []                |
-| F11 |    NA   |    NA    |    I25     | Rodolphus /Lestrange/ |   I24   |  Bellatrix /White/   |             ['I30']              |
-+-----+---------+----------+------------+-----------------------+---------+----------------------+----------------------------------+
++-----+------------+----------+------------+-----------------------+---------+----------------------+-----------------------------+
+|  ID |  Married   | Divorced | Husband ID |      Husband Name     | Wife ID |      Wife Name       |           Children          |
++-----+------------+----------+------------+-----------------------+---------+----------------------+-----------------------------+
+|  F1 | 1955-2-27  |    NA    |     I3     |     Orion /White/     |    I2   |   Walburga /White/   |         ['I1', 'I4']        |
+|  F2 | 1924-12-25 |    NA    |     I9     |    Polluix /White/    |    I8   |    Irma /Crabbe/     |     ['I2', 'I10', 'I16']    |
+|  F3 | 1924-4-16  |    NA    |     I6     |    Arcturus /White/   |    I5   |  Melania /Mcmillan/  |         ['I3', 'I7']        |
+|  F4 | 1900-11-7  |    NA    |    I13     |     Sirius /White/    |   I12   |    Hesper /Gamp/     |     ['I6', 'I14', 'I15']    |
+|  F5 |  1942-4-9  |    NA    |    I11     |   Ignatius /Prewett/  |    I7   |   Lucretia /White/   |              []             |
+|  F6 |  1902-1-8  |    NA    |    I19     |     Cygnus /White/    |   I18   | Violetta /Bulstrode/ | ['I9', 'I20', 'I21', 'I22'] |
+|  F7 |  1937-6-2  |    NA    |    I15     |    Regulus /White/    |   I28   |   Rose /Umbridge/    |           ['I29']           |
+|  F8 | 1930-6-11  | 1935-3-4 |    I15     |    Regulus /White/    |   I26   |     Amy /Smith/      |           ['I27']           |
+|  F9 |  1951-7-4  |    NA    |    I16     |    Cygunus /White/    |   I17   |   Druella /Rosier/   |           ['I24']           |
+| F10 | 1937-12-4  |    NA    |    I23     |    Charlus /Potter/   |   I22   |    Dorea /White/     |              []             |
+| F11 |  1980-1-1  |    NA    |    I25     | Rodolphus /Lestrange/ |   I24   |  Bellatrix /White/   |           ['I30']           |
++-----+------------+----------+------------+-----------------------+---------+----------------------+-----------------------------+
