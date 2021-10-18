@@ -4,6 +4,8 @@
 # @File : GedcomClass.py
 # @Description : Generate Class like Person or family, including their functions
 
+import datetime
+
 def IsADayBeforeBDay(Data_A, Date_B):
     """
     Compare 2 dates, to see if A is before B
@@ -74,6 +76,15 @@ class Person:
 
     def isDivorceBeforeDeath(self):
         return IsADayBeforeBDay(self.divorce_date, self.death_date)
+
+    def isBirthBeforeMarriage(self):
+        return IsADayBeforeBDay(self.birth_date, self.marry_date)
+
+    def isMarriageBeforeDivorce(self):
+        return IsADayBeforeBDay(self.marry_date, self.divorce_date)
+
+    def isDatesBeforeCurrent(self):
+        return IsADayBeforeBDay(self.birth_date, convertDate(datetime.datetime.now().strftime('%d-%m-%Y')))
 
     def isLessThan150YearOld(self):
         return True if self.age < 150 else False

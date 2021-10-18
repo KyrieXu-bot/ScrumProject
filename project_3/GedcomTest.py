@@ -41,6 +41,10 @@ class TestExtract(unittest.TestCase):
         self.assertTrue(person1.isDivorceBeforeDeath())
         self.assertFalse(person2.isDivorceBeforeDeath())
 
+    def testDatesBeforeCurrent(self):
+        person1 = GedcomClass.Person("Regulus", "White", 91, "4-11-1906", "11-6-1930", "4-3-1935", "18-4-1998")
+        self.assertTrue(person1.isDatesBeforeCurrent())
+
     # def testIsLessThan150YearOld(self):
     #     """
     #     This test is based on the tests written before
