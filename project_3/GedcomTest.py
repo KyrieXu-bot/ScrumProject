@@ -2,59 +2,140 @@
 # @Time : 9/26/2021 12:31 AM
 # @Author : Ethan
 # @File : GedcomTest.py
-# @Description : Test the class and its functions in GedcomClass.py
+# @Description : CX the class and its functions in GedcomClass.py
 
 import unittest
 import GedcomClass
+import GedcomMain
 
 
 class TestExtract(unittest.TestCase):
-    # def testName(self):
-    #     person1 = GedcomClass.Person("Ethan", "Winters", "20 8 1998", "12 6 2028", "8 8 1998")
-    #     person2 = GedcomClass.Person("Thomas", "Shelby", "25 3 2000", "4 5 1950", "10 10 2070")
-    #     self.assertEqual(person1.first_name, "Ethan")
-    #     self.assertEqual(person1.last_name, "Winters")
-    #     self.assertEqual(person2.first_name, "Thomas")
-    #     self.assertEqual(person2.last_name, "Shelby")
+    def testStoreBirthAndDeathDate(self):
+        """
+        Written by HZ
+        :return:
+        """
+        person1 = GedcomClass.Person("I1", "F1", "Ethan", "Winters", 80, "1997-7-3", "1998-8-20", "2028-6-12", "1998-8-8")
+        person2 = GedcomClass.Person("I1", "F1", "Thomas", "Shelby", 70, "1945-6-5", "2000-3-25", "1950-5-4", "2070-10-10")
+        self.assertEqual(person1.birth_date, [3, 7, 1997])
+        self.assertEqual(person1.death_date, [8, 8, 1998])
+        self.assertEqual(person2.birth_date, [5, 6, 1945])
+        self.assertEqual(person2.death_date, [10, 10, 2070])
 
-    # def testBirthBeforeDeath(self):
-    #     person1 = GedcomClass.Person("Ethan", "Winters", "20 8 1998", "12 6 2028", "8 8 1998")
-    #     person2 = GedcomClass.Person("Thomas", "Shelby", "25 3 2000", "4 5 1950", "10 10 2070")
-    #     self.assertEqual(person1.birth_date[0], 20)
-    #     self.assertEqual(person1.birth_date[1], 8)
-    #     self.assertEqual(person1.birth_date[2], 1998)
-    #
-    #     self.assertFalse(person1.isBirthBeforeDeath())
-    #     self.assertTrue(person2.isBirthBeforeDeath())
+    def testBirthBeforeMarry(self):
+        """
+        Written by HZ
+        :return:
+        """
+        person1 = GedcomClass.Person("I1", "F1", "Ethan", "Winters", 80, "1997-7-3", "1998-8-20", "2028-6-12", "1998-8-8")
+        person2 = GedcomClass.Person("I1", "F1", "Thomas", "Shelby", 70, "1945-6-5", "1900-3-25", "1950-5-4", "1925-10-10")
+
+        self.assertTrue(person1.isBirthBeforeMarry())
+        self.assertFalse(person2.isBirthBeforeMarry())
+
+    def testBirthBeforeDeath(self):
+        """
+        Written by HZ
+        :return:
+        """
+        person1 = GedcomClass.Person("I1", "F1", "Ethan", "Winters", 80, "1997-7-3", "1998-8-20", "2028-6-12", "1998-8-8")
+        person2 = GedcomClass.Person("I1", "F1", "Thomas", "Shelby", 70, "1945-6-5", "2000-3-25", "1950-5-4", "1900-10-10")
+
+        self.assertTrue(person1.isBirthBeforeDeath())
+        self.assertFalse(person2.isBirthBeforeDeath())
 
     def testMarryBeforeDeath(self):
-        person1 = GedcomClass.Person("Orion", "White", 66, "18-5-1929", "27-2-1955", "NA", "7-9-1995")
-        person2 = GedcomClass.Person("Thomas", "Shelby", 11, "25-3-2000", "4-5-2070", "10-10-2049", "NA")
+        """
+        Written by FJ
+        :return:
+        """
+        person1 = GedcomClass.Person("I1", "F1", "Orion", "White", 66, "929-5-18", "1955-2-27", "NA", "1995-9-7")
+        person2 = GedcomClass.Person("I1", "F1", "Thomas", "Shelby", 11, "2000-3-25", "2070-5-4", "2049-10-10", "NA")
         print(person2.isMarryBeforeDeath())
         self.assertTrue(person1.isMarryBeforeDeath())
         self.assertFalse(person2.isMarryBeforeDeath())
 
     def testDivorceBeforeDeath(self):
-        person1 = GedcomClass.Person("Regulus", "White", 91, "4-11-1906", "11-6-1930", "4-3-1935", "18-4-1998")
-        person2 = GedcomClass.Person("Thomas", "Shelby", 22, "25-3-2000", "4-5-2070", "10-10-2049", "NA")
+        """
+        Written by FJ
+        :return:
+        """
+        person1 = GedcomClass.Person("I1", "F1", "Regulus", "White", 91, "1906-11-4", "1930-6-11", "1935-3-4", "1998-4-18")
+        person2 = GedcomClass.Person("I1", "F1", "Thomas", "Shelby", 22, "2000-3-25", "2070-5-4", "2049-10-10", "NA")
 
         self.assertTrue(person1.isDivorceBeforeDeath())
         self.assertFalse(person2.isDivorceBeforeDeath())
 
+    def testMarryBeforeDivorce(self):
+        """
+        Written by CX
+        :return:
+        """
+        person1 = GedcomClass.Person("I1", "F1", "Regulus", "White", 91, "1906-11-4", "1930-6-11", "1935-3-4", "1998-4-18")
+        person2 = GedcomClass.Person("I1", "F1", "Thomas", "Shelby", 22, "2000-3-25", "2070-5-4", "2049-10-10", "NA")
+
+        self.assertTrue(person1.isMarryeBeforeDivorce())
+        self.assertFalse(person2.isMarryeBeforeDivorce())
+
     def testDatesBeforeCurrent(self):
-        person1 = GedcomClass.Person("Regulus", "White", 91, "4-11-1906", "11-6-1930", "4-3-1935", "18-4-1998")
+        """
+        Written by CX
+        :return:
+        """
+        person1 = GedcomClass.Person("I1", "F1", "Regulus", "White", 91, "1906-11-4", "1930-6-11", "1935-3-4", "1998-4-18")
         self.assertTrue(person1.isDatesBeforeCurrent())
 
-    # def testIsLessThan150YearOld(self):
-    #     """
-    #     This test is based on the tests written before
-    #     :return: Whether the age is less than 150
-    #     """
-    #     person1 = GedcomClass.Person("Ethan", "Winters", "20 8 1998", "12 6 2000", "8 8 2050")
-    #     person2 = GedcomClass.Person("Thomas", "Shelby", "25 3 1800", "4 5 2070", "10 10 2049")
-    #
-    #     self.assertTrue(person1.isLessThan150YearOld())
-    #     self.assertFalse(person2.isLessThan150YearOld())
+    """
+    Sprint 2 Tests below
+    """
+    def testIsLessThan150YearOld(self):
+        """
+        Written by HZ
+        :return:
+        """
+        person1 = GedcomClass.Person("I1", "F1", "Regulus", "White", 91, "1800-11-4", "1930-6-11", "1935-3-4",
+                                     "1998-4-18")
+        self.assertTrue(person1.isLessThan150YearOld())
+
+    def testIsBirthAfterParentsDeath(self):
+        """
+        Written by HZ
+        :return:
+        """
+        individuals = [GedcomClass.Person("I1", "F1", "Father", "Isme", 15,
+                                          "1980-3-5", "1985-2-27", "NA", "1989-6-4"),
+                       GedcomClass.Person("I2", "F1", "Mother", "Isme", 15,
+                                          "1980-3-5", "1985-2-27", "NA", "1995-3-3"),
+                       GedcomClass.Person("I3", "F1", "Normal", "Isme", 15,
+                                          "1989-8-15", "2000-6-11", "2001-3-4", "2013-4-18"),
+                       GedcomClass.Person("I4", "F1", "Ghost", "Isme", 15,
+                                          "1990-3-5", "1930-6-11", "1935-3-4", "1998-4-18"),
+                       GedcomClass.Person("I5", "F1", "Monster", "Isme", 15,
+                                          "1995-3-5", "1930-6-11", "1935-3-4", "1998-4-18"),
+                       ]
+        families = [GedcomClass.Family("F1", "1985-2-27",
+                                      "NA", "I1", "Father /Isme/", "I2", "Mother /Isme/", ['I3', 'I4', 'I5'])]
+        self.assertTrue(GedcomMain.isBirthAfterParentsDeath(individuals, families))
+
+    def testIsParentsNotTooOld(self):
+        """
+        Written by CX
+        :return:
+        """
+        individuals = [GedcomClass.Person("I1", "F1", "Father", "Isme", 15,
+                                          "1720-3-5", "1955-2-27", "NA", "NA"),
+                       GedcomClass.Person("I2", "F1", "Mother", "Isme", 15,
+                                          "1720-3-5", "1955-2-27", "NA", "NA"),
+                       GedcomClass.Person("I3", "F1", "Normal", "Isme", 15,
+                                          "1960-8-15", "2000-6-11", "2001-3-4", "NA"),
+                       GedcomClass.Person("I4", "F1", "Ghost", "Isme", 15,
+                                          "1961-3-5", "1980-6-11", "1935-3-4", "NA"),
+                       GedcomClass.Person("I5", "F1", "Monster", "Isme", 15,
+                                          "1962-3-5", "1990-6-11", "1935-3-4", "NA"),
+                       ]
+        families = [GedcomClass.Family("F1", "1955-2-27",
+                                       "NA", "I1", "Father /Isme/", "I2", "Mother /Isme/", ['I3', 'I4', 'I5'])]
+        self.assertFalse(GedcomMain.isParentsNotTooOld(individuals, families))
 
 
 if __name__ == '__main__':

@@ -8,6 +8,7 @@ import time
 
 from prettytable import PrettyTable
 from GedcomClass import Person
+from GedcomClass import Family
 
 month_dict = {
     "JAN": "1", "FEB": "2", "MAR": "3", "APR": "4", "MAY": "5", "JUN": "6", "JUL": "7", "AUG": "8", "SEP": "9",
@@ -302,21 +303,34 @@ def getIndividuals(indi_fami_dict_list: list):
         last_name = individual['Name'].split(' ')[1][1:-1]
         marry_date = 'NA'
         divorce_date = 'NA'
+        FID = 'NA'
         if individual["Gender"] == "M":  # if it's male, use his Husband ID to find his marry date
             for family in family_list:
                 if individual["ID"] == family["Husband ID"]:
+                    FID = family["ID"]
                     marry_date = family["Married"]
                     divorce_date = family["Divorced"]
                     break
         if individual["Gender"] == "F":  # if it's female, use her Wife ID to find her marry date
             for family in family_list:
                 if individual["ID"] == family["Wife ID"]:
+                    FID = family["ID"]
                     marry_date = family["Married"]
                     divorce_date = family["Divorced"]
                     break
 
-        person = Person(first_name, last_name, individual["Age"], individual["Birthday"],
+        person = Person(individual["ID"], FID, first_name, last_name, individual["Age"], individual["Birthday"],
                         marry_date, divorce_date, individual["Death"])
         person_class_list.append(person)
     return person_class_list
+
+
+def getFamilies(indi_fami_dict_list: list):
+    family_list = indi_fami_dict_list[1]
+    family_class_list = []
+    for family in family_list:
+        family = Family(family["ID"], family["Married"], family["Divorced"], family["Husband ID"], family["Husband Name"],
+                        family["Wife ID"], family["Wife Name"], family["Children"])
+        family_class_list.append(family)
+    return family_class_list
 

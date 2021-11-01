@@ -6,7 +6,8 @@
 
 import datetime
 
-def IsADayBeforeBDay(Data_A, Date_B):
+
+def isADayBeforeBDay(Data_A, Date_B):
     """
     Compare 2 dates, to see if A is before B
     :param Data_A: format should be [day, month, year], all are integers
@@ -36,9 +37,9 @@ def convertDate(date: str):
     else:
         temp = date.split(' ')
         if temp[0] == "about":  # about 1998-2-3
-            return list(map(int, temp[1].split('-')))
+            return list(map(int, temp[1].split('-')))[::-1]
         else:
-            return list(map(int, temp[0].split('-')))
+            return list(map(int, temp[0].split('-')))[::-1]
 
 
 def isDateValid(date):
@@ -47,10 +48,11 @@ def isDateValid(date):
     else:
         return True
 
-
 class Person:
-    def __init__(self, first_name: str, last_name: str, age: int,
+    def __init__(self, IID: str, FID: str, first_name: str, last_name: str, age: int,
                  birth_date: str, marry_date: str, divorce_date: str, death_date: str):
+        self.IID = IID
+        self.FID = FID
         self.first_name = first_name
         self.last_name = last_name
         self.age = age
@@ -62,32 +64,81 @@ class Person:
 
     def showInfo(self):
         print("------------------------")
+        print('IID: ' + self.IID)
+        print('FID: ' + self.FID)
         print(self.first_name + '.' + self.last_name)
         print('birth date: ' + '-'.join([str(i) for i in self.birth_date]))
         print('marry date: ' + '-'.join([str(i) for i in self.marry_date]))
         print('divorce date: ' + '-'.join([str(i) for i in self.divorce_date]))
         print('death date: ' + '-'.join([str(i) for i in self.death_date]))
 
+    def isBirthBeforeMarry(self):
+        """
+        Written by HZ
+        :return:
+        """
+        return isADayBeforeBDay(self.birth_date, self.marry_date)
+
     def isBirthBeforeDeath(self):
-        return IsADayBeforeBDay(self.birth_date, self.death_date)
+        """
+        Written by HZ
+        :return:
+        """
+        return isADayBeforeBDay(self.birth_date, self.death_date)
 
     def isMarryBeforeDeath(self):
-        return IsADayBeforeBDay(self.marry_date, self.death_date)
+        """
+        Written by FJ
+        :return:
+        """
+        return isADayBeforeBDay(self.marry_date, self.death_date)
 
     def isDivorceBeforeDeath(self):
-        return IsADayBeforeBDay(self.divorce_date, self.death_date)
+        """
+        Written by FJ
+        :return:
+        """
+        return isADayBeforeBDay(self.divorce_date, self.death_date)
 
-    def isBirthBeforeMarriage(self):
-        return IsADayBeforeBDay(self.birth_date, self.marry_date)
-
-    def isMarriageBeforeDivorce(self):
-        return IsADayBeforeBDay(self.marry_date, self.divorce_date)
+    def isMarryeBeforeDivorce(self):
+        """
+        Written by CX
+        :return:
+        """
+        return isADayBeforeBDay(self.marry_date, self.divorce_date)
 
     def isDatesBeforeCurrent(self):
-        return IsADayBeforeBDay(self.birth_date, convertDate(datetime.datetime.now().strftime('%d-%m-%Y')))
+        """
+        Written by CX
+        :return:
+        """
+        return isADayBeforeBDay(self.birth_date, convertDate(datetime.datetime.now().strftime('%Y-%m-%d')))
 
     def isLessThan150YearOld(self):
         return True if self.age < 150 else False
         # after refactor, the age calculation is written as a function, and redundant variables are removed
 
+
+class Family:
+    def __init__(self, FID: str, marry_date: str, divorce_date: str, husband_id: str,
+                 husband_name: str, wife_id: str, wife_name: str, children: list):
+        self.FID = FID
+        self.husband_id = husband_id
+        self.husband_name = husband_name
+        self.wife_id = wife_id
+        self.wife_name = wife_name
+        self.children = children
+        self.marry_date = convertDate(marry_date)
+        self.divorce_date = convertDate(divorce_date)
+
+    def showInfo(self):
+        print("------------------------")
+        print('FID: ' + self.FID)
+        print('marry date: ' + '-'.join([str(i) for i in self.marry_date]))
+        print('divorce date: ' + '-'.join([str(i) for i in self.divorce_date]))
+        print('husband ID: ' + self.husband_id)
+        print('husband name: ' + self.husband_name)
+        print('wife ID: ' + self.wife_id)
+        print('wife name: ' + self.wife_name)
+        print('children_ids: ' + str(self.children))
 
