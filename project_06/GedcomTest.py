@@ -15,8 +15,10 @@ class TestExtract(unittest.TestCase):
         Written by HZ
         :return:
         """
-        person1 = GedcomClass.Person("I1", "F1", "Ethan", "Winters", 80, "1997-7-3", "1998-8-20", "2028-6-12", "1998-8-8")
-        person2 = GedcomClass.Person("I1", "F1", "Thomas", "Shelby", 70, "1945-6-5", "2000-3-25", "1950-5-4", "2070-10-10")
+        person1 = GedcomClass.Person("I1", "F1", "Ethan", "Winters", 80, "1997-7-3", "1998-8-20", "2028-6-12",
+                                     "1998-8-8")
+        person2 = GedcomClass.Person("I1", "F1", "Thomas", "Shelby", 70, "1945-6-5", "2000-3-25", "1950-5-4",
+                                     "2070-10-10")
         self.assertEqual(person1.birth_date, [3, 7, 1997])
         self.assertEqual(person1.death_date, [8, 8, 1998])
         self.assertEqual(person2.birth_date, [5, 6, 1945])
@@ -27,8 +29,10 @@ class TestExtract(unittest.TestCase):
         Written by HZ
         :return:
         """
-        person1 = GedcomClass.Person("I1", "F1", "Ethan", "Winters", 80, "1997-7-3", "1998-8-20", "2028-6-12", "1998-8-8")
-        person2 = GedcomClass.Person("I1", "F1", "Thomas", "Shelby", 70, "1945-6-5", "1900-3-25", "1950-5-4", "1925-10-10")
+        person1 = GedcomClass.Person("I1", "F1", "Ethan", "Winters", 80, "1997-7-3", "1998-8-20", "2028-6-12",
+                                     "1998-8-8")
+        person2 = GedcomClass.Person("I1", "F1", "Thomas", "Shelby", 70, "1945-6-5", "1900-3-25", "1950-5-4",
+                                     "1925-10-10")
 
         self.assertTrue(person1.isBirthBeforeMarry())
         self.assertFalse(person2.isBirthBeforeMarry())
@@ -38,8 +42,10 @@ class TestExtract(unittest.TestCase):
         Written by HZ
         :return:
         """
-        person1 = GedcomClass.Person("I1", "F1", "Ethan", "Winters", 80, "1997-7-3", "1998-8-20", "2028-6-12", "1998-8-8")
-        person2 = GedcomClass.Person("I1", "F1", "Thomas", "Shelby", 70, "1945-6-5", "2000-3-25", "1950-5-4", "1900-10-10")
+        person1 = GedcomClass.Person("I1", "F1", "Ethan", "Winters", 80, "1997-7-3", "1998-8-20", "2028-6-12",
+                                     "1998-8-8")
+        person2 = GedcomClass.Person("I1", "F1", "Thomas", "Shelby", 70, "1945-6-5", "2000-3-25", "1950-5-4",
+                                     "1900-10-10")
 
         self.assertTrue(person1.isBirthBeforeDeath())
         self.assertFalse(person2.isBirthBeforeDeath())
@@ -60,7 +66,8 @@ class TestExtract(unittest.TestCase):
         Written by FJ
         :return:
         """
-        person1 = GedcomClass.Person("I1", "F1", "Regulus", "White", 91, "1906-11-4", "1930-6-11", "1935-3-4", "1998-4-18")
+        person1 = GedcomClass.Person("I1", "F1", "Regulus", "White", 91, "1906-11-4", "1930-6-11", "1935-3-4",
+                                     "1998-4-18")
         person2 = GedcomClass.Person("I1", "F1", "Thomas", "Shelby", 22, "2000-3-25", "2070-5-4", "2049-10-10", "NA")
 
         self.assertTrue(person1.isDivorceBeforeDeath())
@@ -71,7 +78,8 @@ class TestExtract(unittest.TestCase):
         Written by CX
         :return:
         """
-        person1 = GedcomClass.Person("I1", "F1", "Regulus", "White", 91, "1906-11-4", "1930-6-11", "1935-3-4", "1998-4-18")
+        person1 = GedcomClass.Person("I1", "F1", "Regulus", "White", 91, "1906-11-4", "1930-6-11", "1935-3-4",
+                                     "1998-4-18")
         person2 = GedcomClass.Person("I1", "F1", "Thomas", "Shelby", 22, "2000-3-25", "2070-5-4", "2049-10-10", "NA")
 
         self.assertTrue(person1.isMarryeBeforeDivorce())
@@ -82,12 +90,14 @@ class TestExtract(unittest.TestCase):
         Written by CX
         :return:
         """
-        person1 = GedcomClass.Person("I1", "F1", "Regulus", "White", 91, "1906-11-4", "1930-6-11", "1935-3-4", "1998-4-18")
+        person1 = GedcomClass.Person("I1", "F1", "Regulus", "White", 91, "1906-11-4", "1930-6-11", "1935-3-4",
+                                     "1998-4-18")
         self.assertTrue(person1.isDatesBeforeCurrent())
 
     """
     Sprint 2 Tests below
     """
+
     def testIsLessThan150YearOld(self):
         """
         Written by HZ
@@ -114,7 +124,7 @@ class TestExtract(unittest.TestCase):
                                           "1995-3-5", "1930-6-11", "1935-3-4", "1998-4-18"),
                        ]
         families = [GedcomClass.Family("F1", "1985-2-27",
-                                      "NA", "I1", "Father /Isme/", "I2", "Mother /Isme/", ['I3', 'I4', 'I5'])]
+                                       "NA", "I1", "Father /Isme/", "I2", "Mother /Isme/", ['I3', 'I4', 'I5'])]
         self.assertTrue(GedcomMain.isBirthAfterParentsDeath(individuals, families))
 
     def testIsBirthAfterParentsMarriage(self):
@@ -177,10 +187,10 @@ class TestExtract(unittest.TestCase):
         :return:
         """
         families1 = [GedcomClass.Family("F1", "1985-2-27",
-                                       "1986-2-27", "I1", "Father /Isme/", "I2", "Mother /Isme/", ['I3', 'I4']),
-                    GedcomClass.Family("F2", "1987-2-27",
-                                       "NA", "I1", "Father /Isme/", "I2", "Mother /Ash/", ['I5']),
-                    ]
+                                        "1986-2-27", "I1", "Father /Isme/", "I2", "Mother /Isme/", ['I3', 'I4']),
+                     GedcomClass.Family("F2", "1987-2-27",
+                                        "NA", "I1", "Father /Isme/", "I2", "Mother /Ash/", ['I5']),
+                     ]
         families2 = [GedcomClass.Family("F1", "1985-2-27",
                                         "1995-2-27", "I1", "Father /Buck/", "I2", "Mother /Jenny/", ['I3', 'I4']),
                      GedcomClass.Family("F2", "1990-2-27",
@@ -188,6 +198,136 @@ class TestExtract(unittest.TestCase):
                      ]
         self.assertFalse(GedcomMain.isThereBigamy(families1))
         self.assertTrue(GedcomMain.isThereBigamy(families2))
+
+    """
+    Sprint 3 Tests below
+    """
+
+    def testIsSiblingsLessThan15(self):
+        """
+        Written by HZ
+        :return:
+        """
+        families1 = [GedcomClass.Family("F1", "1985-2-27",
+                                        "1986-2-27", "I1", "Father /Isme/", "I2", "Mother /Isme/", ['I3', 'I4']),
+                     GedcomClass.Family("F2", "1987-2-27",
+                                        "NA", "I1", "Father /Isme/", "I2", "Mother /Ash/", ['I5']),
+                     ]
+        families2 = [GedcomClass.Family("F1", "1985-2-27",
+                                        "1995-2-27", "I1",
+                                        "Father /Buck/",
+                                        "I2",
+                                        "Mother /Jenny/",
+                                        ['I3', 'I4', 'I8', 'I9', 'I3',
+                                         'I4', 'I8', 'I9', 'I3', 'I4',
+                                         'I8', 'I9', 'I3', 'I4', 'I8',
+                                         'I9', 'I3', 'I4', 'I8', 'I9']),
+                     GedcomClass.Family("F2", "1990-2-27",
+                                        "2000-2-27", "I6", "Father /Bob/", "I2", "Mother /Jenny/", ['I5']),
+                     ]
+        self.assertTrue(GedcomMain.isSiblingsLessThan15(families1))
+        self.assertFalse(GedcomMain.isSiblingsLessThan15(families2))
+
+    def testIsThereDuplicateNameAndBirthDate(self):
+        individuals1 = [GedcomClass.Person("I1", "F1", "Father", "Isme", 15,
+                                           "1920-3-5", "1985-2-27", "NA", "1989-6-4"),
+                        GedcomClass.Person("I4", "F1", "Father", "Isme", 15,
+                                           "1920-3-5", "1930-6-11", "1935-3-4", "1998-4-18"),
+                        GedcomClass.Person("I5", "F1", "Monster", "Isme", 15,
+                                           "1995-3-5", "1930-6-11", "1935-3-4", "1998-4-18"),
+                        ]
+        individuals2 = [GedcomClass.Person("I1", "F1", "Father", "Isme", 15,
+                                           "1920-3-5", "1985-2-27", "NA", "1989-6-4"),
+                        GedcomClass.Person("I4", "F1", "Whatever", "Isme", 15,
+                                           "1920-3-5", "1930-6-11", "1935-3-4", "1998-4-18"),
+                        GedcomClass.Person("I5", "F1", "Monster", "Isme", 15,
+                                           "1995-3-5", "1930-6-11", "1935-3-4", "1998-4-18"),
+                        ]
+        self.assertTrue(GedcomMain.isThereDuplicateNameAndBirthDate(individuals1))
+        self.assertFalse(GedcomMain.isThereDuplicateNameAndBirthDate(individuals2))
+
+    def testIsUniqueIDs(self):
+        individualsTrue = [GedcomClass.Person("I1", "F1", "Father", "Isme", 15,
+                                              "1920-3-5", "1985-2-27", "NA", "1989-6-4"),
+                           GedcomClass.Person("I2", "F1", "Mother", "Isme", 15,
+                                              "1940-3-5", "1985-2-27", "NA", "1995-3-3"),
+                           GedcomClass.Person("I3", "F1", "Normal", "Isme", 15,
+                                              "1989-8-15", "2000-6-11", "2001-3-4", "2013-4-18"),
+                           GedcomClass.Person("I4", "F1", "Ghost", "Isme", 15,
+                                              "1990-3-5", "1930-6-11", "1935-3-4", "1998-4-18"),
+                           GedcomClass.Person("I5", "F1", "Monster", "Isme", 15,
+                                              "1995-3-5", "1930-6-11", "1935-3-4", "1998-4-18"),
+                           ]
+        familiesTrue = [GedcomClass.Family("F1", "1985-2-27",
+                                           "NA", "I1", "Father /Isme/", "I2", "Mother /Isme/", ['I3', 'I4', 'I5']),
+                        GedcomClass.Family("F2", "1987-2-27",
+                                           "NA", "I1", "Father /Isme/", "I2", "Mother /Ash/", ['I5'])
+                        ]
+        individualsFalse = [GedcomClass.Person("I1", "F1", "Father", "Isme", 15,
+                                               "1920-3-5", "1985-2-27", "NA", "1989-6-4"),
+                            GedcomClass.Person("I2", "F3", "Mother", "Isme", 15,
+                                               "1940-3-5", "1985-2-27", "NA", "1995-3-3"),
+                            GedcomClass.Person("I2", "F2", "Normal", "Isme", 15,
+                                               "1989-8-15", "2000-6-11", "2001-3-4", "2013-4-18"),
+                            GedcomClass.Person("I4", "F2", "Ghost", "Isme", 15,
+                                               "1990-3-5", "1930-6-11", "1935-3-4", "1998-4-18"),
+                            ]
+        familiesFalse = [GedcomClass.Family("F1", "1985-2-27",
+                                            "NA", "I1", "Father /Isme/", "I2", "Mother /Isme/", ['I3', 'I4', 'I5']),
+                         GedcomClass.Family("F1", "1987-2-27",
+                                            "NA", "I1", "Father /Isme/", "I2", "Mother /Ash/", ['I5'])
+                         ]
+        self.assertTrue(GedcomMain.isUniqueIDs(individualsTrue, familiesTrue))
+        self.assertFalse(GedcomMain.isUniqueIDs(individualsFalse, familiesFalse))
+        self.assertFalse(GedcomMain.isUniqueIDs(individualsTrue, familiesFalse))
+
+    def testIsSiblingsSpacing(self):
+        """
+        Written by CX
+        :return:
+        """
+        individuals = [GedcomClass.Person("I1", "F1", "Father", "Isme", 15,
+                                          "1920-3-5", "1985-2-27", "NA", "1989-6-4"),
+                       GedcomClass.Person("I2", "F1", "Mother", "Isme", 15,
+                                          "1940-3-5", "1985-2-27", "NA", "1995-3-3"),
+                       GedcomClass.Person("I3", "F1", "Normal", "Isme", 15,
+                                          "1990-8-5", "2000-6-11", "2001-3-4", "2013-4-18"),
+                       GedcomClass.Person("I4", "F1", "Ghost", "Isme", 15,
+                                          "1990-8-6", "1930-6-11", "1935-3-4", "1998-4-18"),
+                       GedcomClass.Person("I5", "F1", "Monster", "Isme", 15,
+                                          "1993-3-5", "1930-6-11", "1935-3-4", "1998-4-18"),
+                       ]
+        families = [GedcomClass.Family("F1", "1985-2-27",
+                                       "NA", "I1", "Father /Isme/", "I2", "Mother /Isme/", ['I3', 'I4', 'I5'])]
+        self.assertTrue(GedcomMain.SiblingsSpacing(individuals, families))
+
+    def testlist_deceased_individual(self):
+        """
+        Written by FJ
+        :return:
+        """
+        individuals = [GedcomClass.Person("I1", "F1", "Andy", "Smith", 15,
+                                          "1980-3-5", "1999-2-27", "NA", "1989-6-4"),
+                       GedcomClass.Person("I2", "F2", "San", "Zhang", 40,
+                                          "1981-3-5", "1998-2-27", "NA", "NA")
+                       ]
+        self.assertTrue(GedcomMain.list_deceased_individual(individuals))
+
+    def testmultiple_birth(self):
+        """
+        Written by FJ
+        :return:
+        """
+        families = [GedcomClass.Family("F2", "1985-2-27", "NA",
+                                       "I4", "Father /Isme/",
+                                       "I3", "Mother /Isme/",
+                                       ['I3', 'I4', 'I5']),
+                    GedcomClass.Family("F7", "1985-3-6", "NA",
+                                       "I5", "Father /Isme/",
+                                       "I9", "Mother /Isme/",
+                                       ['I1', 'I4', 'I6', 'I7']),
+                    ]
+        self.assertTrue(GedcomMain.multiple_birth(families))
 
 
 if __name__ == '__main__':
