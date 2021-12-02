@@ -498,16 +498,16 @@ if __name__ == '__main__':
     families = ged.getFamilies(indi_fami_dict_list)
 
 
-    # for i in individuals:
-    #     i.showInfo()
-    # print("isBirthBeforeMarry: " + str(i.isBirthBeforeMarry()))
-    # print("isBirthBeforeDeath: " + str(i.isBirthBeforeDeath()))
-    # print("isMarryBeforeDeath: " + str(i.isMarryBeforeDeath()))
-    # print("isDivorceBeforeDeath: " + str(i.isDivorceBeforeDeath()))
-    # print("isMarryeBeforeDivorce: " + str(i.isMarryeBeforeDivorce()))
-    # print("isDatesBeforeCurrent: " + str(i.isDatesBeforeCurrent()))
-    # for i in families:
-    #     i.showInfo()
+    for i in individuals:
+        i.showInfo()
+    print("isBirthBeforeMarry: " + str(i.isBirthBeforeMarry()))
+    print("isBirthBeforeDeath: " + str(i.isBirthBeforeDeath()))
+    print("isMarryBeforeDeath: " + str(i.isMarryBeforeDeath()))
+    print("isDivorceBeforeDeath: " + str(i.isDivorceBeforeDeath()))
+    print("isMarryeBeforeDivorce: " + str(i.isMarryeBeforeDivorce()))
+    print("isDatesBeforeCurrent: " + str(i.isDatesBeforeCurrent()))
+    for i in families:
+        i.showInfo()
 
     isBirthAfterParentsDeath(individuals, families)
     isParentsNotTooOld(individuals, families)
@@ -527,3 +527,4 @@ if __name__ == '__main__':
 
     listLivingMarried(individuals, families)
     listOrphans(individuals, families)
+
